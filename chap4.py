@@ -80,11 +80,11 @@ students=[]
 
 
 #1.9 列表的增删查改第二套方法，函数 remove(item),index(item),append(item),insert(index,item)
-p=[5,1,2,3,4,5,5,5,5,5,5,5,5,5,5]
-
-while 5 in p:
-    p.remove(5)
-print(p)
+# p=[5,1,2,3,4,5,5,5,5,5,5,5,5,5,5]
+# 
+# while 5 in p:
+#     p.remove(5)
+# print(p)
 
 
 #2.0 列表排序
@@ -100,16 +100,117 @@ print(p)
 
 #2.2 长得像list 有tuples string,list功能和函数，string,tuples也有
 #字母列表组装成句子
-t=['w', 'e', 'l', 'c', 'o', 'm', 'e', ' ', 't', 'o', ' ', 'b', 'l', 'u', 'e', 'd', 'o', 'm']
-str=''
-for ch in t:
-    str+=ch
-print (str)
+# t=['w', 'e', 'l', 'c', 'o', 'm', 'e', ' ', 't', 'o', ' ', 'b', 'l', 'u', 'e', 'd', 'o', 'm']
+# str=''
+# for ch in t:
+#     str+=ch
+# print (str)
 
 #2.3 可变和不可变的值类型。
 #string创建之后，字符串元素item不能修改值，p="tom",p[1]='a'操作不允许
 
 
+#2.4 list tuple string相互转换,使用对应
+#list(tuple/string),tuple(list/string) str(list/tuple)
+p=[1,2,3,4]
+p=tuple(p)
+print (type(p))
+
+p=str(p)
+
+print (type(p))
+
+#引用传递和值传递 ，引用传递相当于快捷方式，只有一个目标文件
+#而值传递的，相当于原件的副本。最终两个目标文件
+
+a=5
+b=10
+
+def swap(num1,num2):
+    print("num1={},num2={}".format(num1,num2))
+    num1,num2=num2,num1
+    print("num1={},num2={}".format(num1,num2))
+    
+print("交换前：a={},b={}".format(a,b))
+swap(a,b)
+print("交换后：a={},b={}".format(a,b))
+
+def swap2( num1, num2):
+    
+    num1,num2=num2,num1
+    
+
+
+
+c=[1,2,3]
+d=c
+ 
+# print("交换前：c={}".format(c))
+# change(c)
+# print("交换前：c={}".format(c))
+
+def change(obj):
+#    obj.append("egg")
+    obj+=1
+
+print("a={}".format(str(a)))
+change(a)
+print("a={}".format(str(a)))
+
+
+#copy模块 把原来是引用传递的list，也可以当成值传递
+import copy
+
+p=[1,2,3,4,5]
+q=p;
+print("p.id={},q.id={}".format(id(p),id(q))) 
+#相同id，表示指向同一个目标
+q[1]=100
+print("p={},q={}".format(p,q)) 
+#赋值list内容
+t=copy.copy(p)
+t[2]=100
+print("p={},t={}".format(p,t)) 
+
+#实验，写函数把列表传入，输入字符串
+
+def  changeList(l):
+    str_temp=''
+    #for item in l:
+#         str_temp+=item+", "
+    for i in range(len(l)):
+        if i==(len(l)-1):
+            str_temp+=l[i]
+        else:
+            str_temp+=l[i]+", "
+    return str_temp
+
+content=['welcome','to','bluedon']
+print(changeList(content))
+
+
+grid = [['.', '.', '.', '.', '.', '.'],
+        ['.', 'O', 'O', '.', '.', '.'],
+        ['O', 'O', 'O', 'O', '.', '.'],
+        ['O', 'O', 'O', 'O', 'O', '.'],
+        ['.', 'O', 'O', 'O', 'O', 'O'],
+        ['O', 'O', 'O', 'O', 'O', '.'],
+        ['O', 'O', 'O', 'O', '.', '.'],
+        ['.', 'O', 'O', '.', '.', '.'],
+        ['.', '.', '.', '.', '.', '.']]
+#原来样子
+for y in grid:
+    temp=""
+    for x in y:
+        temp+=x
+    print(temp)
+#顺时针转90°
+
+for x in range(len(grid[0])):
+    temp=""
+    for y in range(len(grid)):
+        temp+=grid[y][x]
+    print(temp)
 
 
 
